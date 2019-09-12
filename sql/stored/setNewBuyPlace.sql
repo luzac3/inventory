@@ -75,22 +75,20 @@ BEGIN
       ");
     END IF;
 
-    SET @query = CONCAT(@query,"
-      SELECT
-        BUY_PLACE_CD
-      FROM
-        C_BUY_PLACE_CD
-      WHERE
-        BUY_PLACE = _buyPlace
-      ;
-    ");
-
-    SET @query_text = CONCAT(@query,@event_num,@query_key,@group,";");
+    SET @query_text = @query;
 
     -- 実行
     PREPARE main_query FROM @query_text;
     EXECUTE main_query;
     DEALLOCATE PREPARE main_query;
+
+    SELECT
+      BUY_PLACE_CD
+    FROM
+      C_BUY_PLACE_CD
+    WHERE
+      BUY_PLACE = _buyPlace
+    ;
 
     SET exit_cd = 0;
 

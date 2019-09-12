@@ -69,22 +69,20 @@ BEGIN
       ");
     END IF;
 
-    SET @query = CONCAT(@query,"
-      SELECT
-        TYPE_CD
-      FROM
-        C_TYPE_CD
-      WHERE
-        TYPE = '",_type,"'
-      ;
-    ");
-
-    SET @query_text = CONCAT(@query,@event_num,@query_key,@group,";");
+    SET @query_text = @query;
 
     -- 実行
     PREPARE main_query FROM @query_text;
     EXECUTE main_query;
     DEALLOCATE PREPARE main_query;
+
+    SELECT
+      TYPE_CD
+    FROM
+      C_TYPE_CD
+    WHERE
+      TYPE = _type
+    ;
 
     SET exit_cd = 0;
 
