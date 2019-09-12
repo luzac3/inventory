@@ -17,5 +17,5 @@ window.onload = function(){
       document.getElementsByTagName("button")
       ,"click"
       ,getDataList
-    }
+    )
 }
