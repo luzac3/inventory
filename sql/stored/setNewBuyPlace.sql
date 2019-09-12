@@ -59,7 +59,13 @@ BEGIN
         VALUES(
           (
             SELECT DISTINCT
-              LPAD(MAX(CAST(BUY_PLACE_CD AS INT))+1,3,'0')
+                IFNULL(BUY_PLACE_CD,'000')
+                FROM (
+                  SELECT
+                    LPAD(MAX(CAST(BUY_PLACE_CD AS INT))+1,3,'0') AS BUY_PLACE_CD
+                  FROM
+                    C_TYPE_CD
+                ) AS temp
           )
           ,",_webFlg,"
           ,",_buyPlace,"

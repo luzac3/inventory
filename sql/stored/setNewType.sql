@@ -55,9 +55,15 @@ BEGIN
         VALUES(
           (
             SELECT DISTINCT
-              LPAD(MAX(CAST(TYPE_CD AS INT))+1,3,'0')
+              IFNULL(TYPE_CD,'000')
+              FROM (
+                SELECT
+                  LPAD(MAX(CAST(TYPE_CD AS INT))+1,3,'0') as TYPE_CD
+                FROM
+                  C_TYPE_CD
+              ) AS temp
           )
-          ,",_type,"
+          ,'",_type,"'
         )
         ;
       ");
