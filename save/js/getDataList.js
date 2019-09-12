@@ -23,8 +23,7 @@ function getDataList(){
             let base64 = canvas.toDataURL(imageType);
 
             let blob = base64toBlob(base64,imageType);
-
-            // 未修正部分
+            
             argArr = {
                 tableName:"T_CNTNT"
                 ,sql:[
