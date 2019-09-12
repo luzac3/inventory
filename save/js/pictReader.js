@@ -1,5 +1,5 @@
-function pictReader(){
-    const TARGET = this.target;
+function pictReader(event){
+    const TARGET = event.target;
     const FILES = TARGET.files;
 
     let file = FILES[0];
@@ -36,8 +36,8 @@ function pictReader(){
 
             ctx.drawImage(image,0,0);
 
-            document.getElementById("ext").classList.add(ext);
-            document.getElementById("fileName").classList.add(fileName);
+            storager.set("ext",ext);
+            storager.set("fileName",fileName);
         }
         image.src = thisImage.target.result;
     }
