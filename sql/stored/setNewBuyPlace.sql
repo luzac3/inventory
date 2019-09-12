@@ -59,7 +59,7 @@ BEGIN
         VALUES(
           (
             SELECT DISTINCT
-              LPAD(MAX(CAST(BUY_PLACE_CD AS INT))+1,3,"0")
+              LPAD(MAX(CAST(BUY_PLACE_CD AS INT))+1,3,'0')
           )
           ,",_webFlg,"
           ,",_buyPlace,"
