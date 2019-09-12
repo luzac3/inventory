@@ -17,7 +17,10 @@ function getDataList(){
             }
 
             // 画像データ取得
-            pictReader.bind(this)();
+            let ext = storager.get("ext");
+            let canvas = document.getElementById("canvas");
+            let imageType = "image/" + ext;
+            let base64 = canvas.toDataURL(imageType);
 
             // 未修正部分
             argArr = {
