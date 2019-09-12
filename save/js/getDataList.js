@@ -2,7 +2,7 @@
 function getDataList(){
         if(this.value=="register"){
 
-            let cntntArr = {};
+            let inventoryArr = {};
             let sqlJoinnerArr = [];
 
             let nodeList = document.getElementsByTagName("table")[0].getElementsByTagName("input");
@@ -13,7 +13,7 @@ function getDataList(){
                 if(nodeList[i].Name == "discountFlg" && !nodeList[i].checked){
                     continue;
                 }
-                cntntArr[nodeList[i].id] = nodeList[i].value;
+                inventoryArr[nodeList[i].id] = nodeList[i].value;
             }
 
             // 画像データ取得
@@ -22,31 +22,35 @@ function getDataList(){
             let imageType = "image/" + ext;
             let base64 = canvas.toDataURL(imageType);
 
+            let blob = base64toBlob(base64,imageType);
+
             // 未修正部分
             argArr = {
                 tableName:"T_CNTNT"
                 ,sql:[
-                    cntntArr["cntntCd"]
-                    ,parentEvntCd
-                    ,cntntArr["title"]
-                    ,cntntArr["status"]
-                    ,startDate
-                    ,endDate
-                    ,gatherDate
-                    ,cntntArr["content"]
-                    ,cntntArr["remarks"]
+                    inventoryArr["tagNo"]
+                    ,inventoryArr["name"]
+                    ,inventoryArr["color"]
+                    ,blob
+                    ,inventoryArr["type"]
+                    ,inventoryArr["buyDate"]
+                    ,inventoryArr["price"]
+                    ,inventoryArr["count"]
+                    ,inventoryArr["other"]
+                    ,inventoryArr["discountKind"]
+                    ,inventoryArr["discountRate"]
+                    ,inventoryArr["buyPlace"]
+                    ,inventoryArr["leftItem"]
+                    ,inventoryArr["storage"]
                 ]
-                ,sqlCntntTerms:"CNTNT_CD = '"+cntntArr["cntntCd"]+"'"
-                ,tableNameJoinner:"T_CNTNT_JNNR"
-                ,sqlJoinner:sqlJoinnerArr
-                ,cntntCd:cntntArr["cntntCd"]
+                ,url:inventoryArr["buyURL"]
             };
 
-            defaultAjax(argArr,"/inventory/eventSet/php/register.php").then(function(data){
+            defaultAjax(argArr,"/inventory/save/php/register.php").then(function(data){
                 // ページ繊維
-                location.href="/inventory/eventSet/html/complete.html";
+                location.href="/inventory/save/html/complete.html";
             },function(){
-                location.href="/inventory/eventSet/html/error.html";
+                location.href="/inventory/save/html/error.html";
             });
         }
 }
