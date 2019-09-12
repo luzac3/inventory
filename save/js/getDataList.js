@@ -22,15 +22,13 @@ function getDataList(){
             let imageType = "image/" + ext;
             let base64 = canvas.toDataURL(imageType);
 
-            let blob = base64toBlob(base64,imageType);
-
             argArr = {
                 tableName:"T_CNTNT"
                 ,sql:{
                     tagNo:inventoryArr["tagNo"]
                     ,name:inventoryArr["name"]
                     ,color:inventoryArr["color"]
-                    ,blob:blob
+                    ,base64:base64
                     ,type:inventoryArr["type"]
                     ,buyDate:inventoryArr["buyDate"]
                     ,price:inventoryArr["price"]
@@ -41,6 +39,8 @@ function getDataList(){
                     ,buyPlace:inventoryArr["buyPlace"]
                     ,leftItem:inventoryArr["leftItem"]
                     ,storage:inventoryArr["storage"]
+                    ,registerDate:"Date(3)"
+                    ,updateDate:"Date(3)"
                 }
                 ,url:inventoryArr["buyURL"]
             };
