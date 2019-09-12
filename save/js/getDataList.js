@@ -1,8 +1,5 @@
 // イベント列挙
 function getDataList(){
-    let button = document.getElementsByTagName("button");
-    // ボタン押下時
-    elemEventSetter(button,"click",function(){
         if(this.value=="register"){
 
             let cntntArr = {};
@@ -20,7 +17,7 @@ function getDataList(){
             }
 
             // 画像データ取得
-            pictReader.bind(this);
+            pictReader.bind(this)();
 
             // 未修正部分
             argArr = {
@@ -49,5 +46,4 @@ function getDataList(){
                 location.href="/inventory/eventSet/html/error.html";
             });
         }
-    });
 }
