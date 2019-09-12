@@ -30,12 +30,12 @@ class DbInfo{
             $this->server = "localhost";
             $this->username = "root";
             $this->password = "alderaan";
-            $this->db_name = "timekeeper";
+            $this->db_name = "inventory";
         }else{
             $this->server = "mysql622.db.sakura.ne.jp";
             $this->username = "wolfnet-twei";
             $this->password = "alderaan123";
-            $this->db_name = "wolfnet-twei_timekeeper";
+            $this->db_name = "wolfnet-twei_inventory";
         }
     }
 }
