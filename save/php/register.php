@@ -14,8 +14,8 @@ if(!empty($_POST["argArr"])){
         $webFlg = 1;
     }
 
-    $argArr["sql"]["type"] = call_stored("setNewType",[$argArr["sql"]["type"]]);
-
+    //$argArr["sql"]["type"] = call_stored("setNewType",[$argArr["sql"]["type"]]);
+/*
     $argArr["sql"]["buyPlace"] = call_stored("setNewBuyPlace",[
         $argArr["sql"]["buyPlace"]
         ,$webFlg
@@ -28,8 +28,8 @@ if(!empty($_POST["argArr"])){
         ,"sql"=>$argArr["sql"]
       )
     );
-
-    echo json_encode($output);
+*/
+    echo json_encode($argArr["sql"]["type"]);
 }else{
     echo json_encode(0);
 }
