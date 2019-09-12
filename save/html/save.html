@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<?php
+    // headerの読み込みファイル(APIなど)のリスト
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once $root . '/pict/common/php/stored.php';
+    readfile($_SERVER['DOCUMENT_ROOT']."/pict/common/html/header.html");
+?>
+<link rel="stylesheet" href="/pict/save/css/pict.css" type="text/css" media="screen">
+<script type="text/javascript" src="/pict/save/js/fileReader.js"></script>
+<script type="text/javascript" src="/pict/save/js/save.js"></script>
+<script type="text/javascript" src="/pict/save/js/getDataList.js"></script>
+<script type="text/javascript" src="/pict/save/js/pictReader.js"></script>
+<title>写真ロード</title>
+</head>
+<body><div id="main">
+  <div><form><table>
+      <tr>
+        <td rowspan="16">
+            <p id="reader"><input type="file" id = "files" name = "files[]" multiple /></p>
+
+          <p><canvas id ="canvas" class = "hidden">画像表示領域</canvas></p>
+        </td>
+      </tr>
+      <tr>
+        <td>タグNo</td>
+        <td><input type="text" value="" disabled></td>
+      </tr>
+      <tr>
+        <td>名称</td>
+        <td><input id="name" type="text" value=""></td>
+      </tr>
+      <tr>
+        <td>色(色コード)</td>
+        <td><input id="color" type="text" value="" ></td>
+      </tr>
+      <tr>
+        <td>区分</td>
+        <td><input id="type" type="text" value=""></td>
+      </tr>
+      <tr>
+        <td>購入日</td>
+        <td><input id="buyDate" type="date" value=""></td>
+      </tr>
+      <tr>
+        <td>値段</td>
+        <td><input id="price" type="number" value=""></td>
+      </tr>
+      <tr>
+        <td>単位</td>
+        <td><input id="unit" type="text" value=""></td>
+      </tr>
+      <tr>
+        <td>数量</td>
+        <td><input id="count" type="number" value=""></td>
+      </tr>
+      <tr>
+        <td>割引有無</td>
+        <td><input class="other" type="radio" name="discountFlg" value="1" checked>あり　<input class="other" type="radio" name="discountFlg" value="0">なし</td>
+      </tr>
+      <tr>
+        <td>割引種類</td>
+        <td><input id="discountKind" type="text" value=""></td>
+      </tr>
+      <tr>
+        <td>割引率(%)</td>
+        <td><input id="discountRate" type="number" value=""></td>
+      </tr>
+      <tr>
+        <td>購入場所</td>
+        <td><input id="buyPlace" type="text" value=""></td>
+      </tr>
+      <tr>
+        <td>購入サイトURL(場所がWEBの場合)</td>
+        <td><input id="buyURL" type="text" value=""></td>
+      </tr>
+      <tr>
+        <td>残数(大体でよい)</td>
+        <td><input id="leftItem" type="number" value=""></td>
+      </tr>
+      <tr>
+        <td>収納場所</td>
+        <td><input id="storage" type="text" value=""></td>
+      </tr>
+  </table></form></div>
+  <p><button type="button" value="register">登録</button></p>
+</div></body>
+</html>
