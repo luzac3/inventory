@@ -38,9 +38,6 @@ function pictReader(event){
             let drawSpaceWidth = parseInt(window.getComputedStyle(parent).getPropertyValue('width'));
             let drawSpaceHeight = parseInt(window.getComputedStyle(parent).getPropertyValue('height'));
 
-            canvasSave.width = imageWidth;
-            canvasSave.height = imageHeight;
-
             ctx.fillStyle = "gray";
             ctx.fillRect(0,0,drawSpaceWidth,drawSpaceHeight);
 
@@ -58,6 +55,12 @@ function pictReader(event){
               drawWidth = imageWidth * (drawSpaceHeight / imageHeight);
             }
 
+            canvasSave.width = imageWidth;
+            canvasSave.height = imageHeight;
+
+            canvas.width = drawWidth;
+            canvas.height = drawHeight;
+
             ctx.drawImage(
               image
               ,0
@@ -69,6 +72,7 @@ function pictReader(event){
               ,drawWidth
               ,drawHeight
             );
+
 
             ctxSave.drawImage(image,0,0);
 

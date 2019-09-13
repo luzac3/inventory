@@ -1,3 +1,24 @@
+<?php
+    header('Content-Type: text/html; charset=utf8mb4');
+    // データの取得
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once($root."/inventory/common/php/stored.php");
+
+    if(!empty($_GET["evnt"])){
+        $cntntCd = $_GET["evnt"];
+    }else{
+        if(!isset($_COOKIE["evnt"])){
+            // 新イベントコード作成/取得
+            $newTagNo = stored("newTagNo",null)[0];
+            setcookie("tagNo",$newTagNo["NO"]);
+            $tagNo = $newTagNo["NO"];
+        }else{
+            $tagNo = $_COOKIE["tagNo"];
+        }
+    }
+
+    $inventory = stored("getinventory",[$tagNo])[0];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +32,7 @@
 <script type="text/javascript" src="/inventory/save/js/save.js"></script>
 <script type="text/javascript" src="/inventory/save/js/getDataList.js"></script>
 <script type="text/javascript" src="/inventory/save/js/pictReader.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>写真ロード</title>
 </head>
 <body><div id="main">
@@ -22,7 +44,11 @@
       </tr>
       <tr>
         <td>タグNo</td>
-        <td><input id="tagNo" type="text" value="" disabled></td>
+        <?php
+          echo "<td>";
+          echo "<input id='tagNo' type='text' value='".$tagNo."' disabled>";
+          echo "</td>";
+        ?>
       </tr>
       <tr>
         <td>名称</td>

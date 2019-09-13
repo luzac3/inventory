@@ -10,17 +10,30 @@ function getDataList(){
             let nodeListLen = nodeList.length;
 
             for(let i=0; i < nodeListLen; i++){
-                if(nodeList[i].Name == "discountFlg" && !nodeList[i].checked){
-                    continue;
+                if(nodeList[i].name == "discountFlg"){
+                  if(nodeList[i].checked){
+                    inventoryArr["discountFlg"] = nodeList[i].value;
+                  }
+                  continue;
+                }
+                if(nodeList[i].id=="tagNo"){
+                  
                 }
                 inventoryArr[nodeList[i].id] = nodeList[i].value;
             }
 
+            let ext = "";
+            let imageType = "";
+            let base64 = "";
+
+
             // 画像データ取得
-            let ext = storager.get("ext");
-            let canvas = document.getElementById("canvasSave");
-            let imageType = "image/" + ext;
-            let base64 = canvas.toDataURL(imageType);
+            if(storager.check("ext")){
+              let canvas = document.getElementById("canvasSave");
+              ext = storager.get("ext");
+              imageType = "image/" + ext;
+              base64 = canvas.toDataURL(imageType);
+            }
 
             argArr = {
                 tableName:"T_INVENTORY_MSTR"
@@ -32,8 +45,9 @@ function getDataList(){
                     ,type:inventoryArr["type"]
                     ,buyDate:inventoryArr["buyDate"]
                     ,price:inventoryArr["price"]
+                    ,unit:inventoryArr["unit"]
                     ,count:inventoryArr["count"]
-                    ,other:inventoryArr["other"]
+                    ,discountFlg:inventoryArr["discountFlg"]
                     ,discountKind:inventoryArr["discountKind"]
                     ,discountRate:inventoryArr["discountRate"]
                     ,buyPlace:inventoryArr["buyPlace"]
