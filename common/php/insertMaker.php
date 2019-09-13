@@ -24,8 +24,8 @@ function insertMaker($argArr){
                   $sql .= "NULL,";
                   continue;
               }
-              if($item == "Date"){
-                  $sql .= "Date(3),";
+              if($item == "now"){
+                  $sql .= "NOW(3),";
                   continue;
               }
               $sql .= "'" . $item . "',";

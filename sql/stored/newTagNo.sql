@@ -39,7 +39,7 @@ BEGIN
     END;
 
     SELECT
-        DATE(3) INTO @makeDate
+        NOW(3) INTO @makeDate
     FROM
         T_INVENTORY_MSTR
     ;
@@ -47,17 +47,16 @@ BEGIN
       SET @query = CONCAT("
         INSERT INTO T_INVENTORY_MSTR
         VALUES(
-          (
             (
-              SELECT
-                NO
+              SELECT DISTINCT
+                IFNULL(NO,'00000')
               FROM
                   (
                     SELECT DISTINCT
-                      LPAD(MAX(COUNT(NO))+1,5,'0') AS NO
+                      LPAD(MAX(CAST(NO AS SIGNED))+1,5,'0') AS NO
                     FROM
                       T_INVENTORY_MSTR
-                  ) temp
+                  ) AS temp
               )
             ,''
             ,NULL
@@ -75,7 +74,6 @@ BEGIN
             ,''
             ,@makeDate
             ,''
-          )
         )
         ;
       ");

@@ -23,6 +23,12 @@ function updateMaker($argArr){
 
       forEach($columnList as $column){
           $sql .= $column["Field"];
+          if($updateDataArr[$num] == "now"){
+              $sql .= "=";
+              $sql .= "NOW(3)";
+              $sql .= ",";
+              continue;
+          }
           if($updateDataArr[$num] == "null" || $updateDataArr[$num] == ""){
               $sql .= "=";
               $sql .= "NULL";
@@ -31,9 +37,6 @@ function updateMaker($argArr){
               $sql .= "='";
               $sql .= $updateDataArr[$num];
               $sql .= "',";
-          }
-          if($item == "Date"){
-              $sql .= "Date(3),";
           }
           $num++;
       };

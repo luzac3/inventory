@@ -17,7 +17,7 @@ function getDataList(){
                   continue;
                 }
                 if(nodeList[i].id=="tagNo"){
-                  
+
                 }
                 inventoryArr[nodeList[i].id] = nodeList[i].value;
             }
@@ -37,26 +37,27 @@ function getDataList(){
 
             argArr = {
                 tableName:"T_INVENTORY_MSTR"
-                ,sql:{
-                    tagNo:inventoryArr["tagNo"]
-                    ,name:inventoryArr["name"]
-                    ,color:inventoryArr["color"]
-                    ,base64:base64
-                    ,type:inventoryArr["type"]
-                    ,buyDate:inventoryArr["buyDate"]
-                    ,price:inventoryArr["price"]
-                    ,unit:inventoryArr["unit"]
-                    ,count:inventoryArr["count"]
-                    ,discountFlg:inventoryArr["discountFlg"]
-                    ,discountKind:inventoryArr["discountKind"]
-                    ,discountRate:inventoryArr["discountRate"]
-                    ,buyPlace:inventoryArr["buyPlace"]
-                    ,leftItem:inventoryArr["leftItem"]
-                    ,storage:inventoryArr["storage"]
-                    ,registerDate:"Date"
-                    ,updateDate:"Date"
-                }
+                ,sql:[
+                    inventoryArr["tagNo"]
+                    ,inventoryArr["name"]
+                    ,inventoryArr["color"]
+                    ,base64
+                    ,inventoryArr["type"]
+                    ,inventoryArr["buyDate"]
+                    ,inventoryArr["price"]
+                    ,inventoryArr["unit"]
+                    ,inventoryArr["count"]
+                    ,inventoryArr["discountFlg"]
+                    ,inventoryArr["discountKind"]
+                    ,inventoryArr["discountRate"]
+                    ,inventoryArr["buyPlace"]
+                    ,inventoryArr["leftItem"]
+                    ,inventoryArr["storage"]
+                    ,"now"
+                    ,"now"
+                ]
                 ,url:inventoryArr["buyURL"]
+                ,terms:"NO = '" + inventoryArr["tagNo"] + "'"
             };
 
             defaultAjax(argArr,"/inventory/save/php/register.php").then(function(data){
