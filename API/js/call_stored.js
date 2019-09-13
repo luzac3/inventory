@@ -8,7 +8,7 @@ function call_stored(stored_name,arg_arr,time_out = 10000){
 
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: "/timeKeeper/common/php/js_stored.php",
+            url: "/inventory/common/php/js_stored.php",
             cache: false,
             timeout: time_out,
             type:'POST',

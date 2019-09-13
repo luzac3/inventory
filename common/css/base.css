@@ -32,6 +32,26 @@ body {
     display:none;
 }
 
+.relative{
+	position: relative;
+}
+
+.confirm{
+	position: absolute;
+  top: 5;
+  left: 5;
+	width:95%;
+	height:95%;
+}
+
+.fullConfirm{
+	position: absolute;
+  top: 0;
+  left: 0;
+	width:100%;
+	height:100%;
+}
+
 .inline-block{
 	display:inline-block;
 }

@@ -67,14 +67,15 @@ BEGIN
         )
         ;
       ");
+
+      SET @query_text = @query;
+
+      -- 実行
+      PREPARE main_query FROM @query_text;
+      EXECUTE main_query;
+      DEALLOCATE PREPARE main_query;
+
     END IF;
-
-    SET @query_text = @query;
-
-    -- 実行
-    PREPARE main_query FROM @query_text;
-    EXECUTE main_query;
-    DEALLOCATE PREPARE main_query;
 
     SELECT
       TYPE_CD

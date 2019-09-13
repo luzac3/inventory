@@ -18,12 +18,12 @@ function getDataList(){
 
             // 画像データ取得
             let ext = storager.get("ext");
-            let canvas = document.getElementById("canvas");
+            let canvas = document.getElementById("canvasSave");
             let imageType = "image/" + ext;
             let base64 = canvas.toDataURL(imageType);
 
             argArr = {
-                tableName:"T_CNTNT"
+                tableName:"T_INVENTORY_MSTR"
                 ,sql:{
                     tagNo:inventoryArr["tagNo"]
                     ,name:inventoryArr["name"]
@@ -39,8 +39,8 @@ function getDataList(){
                     ,buyPlace:inventoryArr["buyPlace"]
                     ,leftItem:inventoryArr["leftItem"]
                     ,storage:inventoryArr["storage"]
-                    ,registerDate:"Date(3)"
-                    ,updateDate:"Date(3)"
+                    ,registerDate:"Date"
+                    ,updateDate:"Date"
                 }
                 ,url:inventoryArr["buyURL"]
             };

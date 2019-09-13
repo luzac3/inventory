@@ -22,7 +22,7 @@ function call_stored_wait(arg_arr,user_list,user_num){
 
     return new Promise(function(resolve, reject){
         $.ajax({
-            url: "/timeKeeper/common/php/js_stored.php",
+            url: "/inventory/common/php/js_stored.php",
             cache: false,
             timeout: 30*60*1000,
             type:'POST',

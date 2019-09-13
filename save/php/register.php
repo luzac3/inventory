@@ -9,27 +9,27 @@ if(!empty($_POST["argArr"])){
     $argArr = $_POST["argArr"];
 
     if($argArr["url"] === ""){
-        $webFlg = null;
+        $webFlg = 0;
     }else{
         $webFlg = 1;
     }
 
-    //$argArr["sql"]["type"] = call_stored("setNewType",[$argArr["sql"]["type"]]);
-/*
-    $argArr["sql"]["buyPlace"] = call_stored("setNewBuyPlace",[
-        $argArr["sql"]["buyPlace"]
-        ,$webFlg
+    $argArr["sql"]["type"] = stored("setNewType",[$argArr["sql"]["type"]])[0]["TYPE_CD"];
+
+    $argArr["sql"]["buyPlace"] = stored("setNewBuyPlace",[
+        $webFlg
+        ,$argArr["sql"]["buyPlace"]
         ,$argArr["url"]
-    ]);
+    ])[0]["BUY_PLACE_CD"];
 
     $output = insertMaker(
       array(
         "tableName"=>$argArr["tableName"]
-        ,"sql"=>$argArr["sql"]
+        ,"sql"=>[$argArr["sql"]]
       )
     );
-*/
-    echo json_encode($argArr["sql"]["type"]);
+
+    echo json_encode($output);
 }else{
     echo json_encode(0);
 }

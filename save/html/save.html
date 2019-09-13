@@ -2,14 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<?php
-    // headerの読み込みファイル(APIなど)のリスト
-    $root = $_SERVER["DOCUMENT_ROOT"];
-    require_once $root . '/pict/common/php/stored.php';
-    readfile($_SERVER['DOCUMENT_ROOT']."/pict/common/html/header.html");
-?>
 <link rel="stylesheet" href="/inventory/common/css/base.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/inventory/common/css/table_conf.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/inventory/save/css/save.css" type="text/css" media="screen">
 <script type="text/javascript" src="/inventory/API/js/storager.js"></script>
 <script type="text/javascript" src="/inventory/common/js/elemEventSetter.js"></script>
 <script type="text/javascript" src="/inventory/common/js/defaultAjax.js"></script>
@@ -21,10 +16,8 @@
 <body><div id="main">
   <div><form><table>
       <tr>
-        <td rowspan="16">
-            <p id="reader"><input type="file" id = "files" name = "files[]" multiple /></p>
-
-          <p><canvas id ="canvas" class = "hidden">画像表示領域</canvas></p>
+        <td id="pictTd" class="relative" rowspan="16">
+          <p id="canvasParent" class="confirm"><canvas id ="canvas">画像表示領域</canvas></p>
         </td>
       </tr>
       <tr>
@@ -88,6 +81,8 @@
         <td><input id="storage" type="text" value=""></td>
       </tr>
   </table></form></div>
+  <p><input type="file" id = "files" name = "files[]" multiple /></p>
+  <p class="none"><canvas id ="canvasSave" class="none">保存用画像領域</canvas></p>
   <p><button type="button" value="register">登録</button></p>
 </div></body>
 </html>

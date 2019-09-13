@@ -8,10 +8,6 @@ window.onload = function(){
     //INPUT_BUTTON.addEventListener("change", selectUser, false);
     //UPLOAD_PICT.addEventListener("click", saveCanvas, false);
 
-    // storagerの初期化
-    storager.set("ext","");
-    storager.set("fileName","");
-
     elemEventSetter(
       document.getElementById("files")
       ,"change"

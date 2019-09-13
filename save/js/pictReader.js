@@ -2,6 +2,10 @@ function pictReader(event){
     const TARGET = event.target;
     const FILES = TARGET.files;
 
+    // storagerの初期化
+    storager.set("ext","");
+    storager.set("fileName","");
+
     let file = FILES[0];
 
     let fileName = file["name"];
@@ -25,16 +29,48 @@ function pictReader(event){
             let imageWidth = image.naturalWidth;
             let imageHeight = image.naturalHeight;
 
+            const parent = document.getElementById("canvasParent");
             const canvas = document.getElementById("canvas");
             const ctx = canvas.getContext("2d");
+            const canvasSave = document.getElementById("canvasSave");
+            const ctxSave = canvasSave.getContext("2d");
 
-            canvas.width = imageWidth;
-            canvas.height = imageHeight;
+            let drawSpaceWidth = parseInt(window.getComputedStyle(parent).getPropertyValue('width'));
+            let drawSpaceHeight = parseInt(window.getComputedStyle(parent).getPropertyValue('height'));
+
+            canvasSave.width = imageWidth;
+            canvasSave.height = imageHeight;
 
             ctx.fillStyle = "gray";
-            ctx.fillRect(0,0,100,100);
+            ctx.fillRect(0,0,drawSpaceWidth,drawSpaceHeight);
 
-            ctx.drawImage(image,0,0);
+            ctxSave.fillStyle = "gray";
+            ctxSave.fillRect(0,0,imageWidth,imageHeight);
+
+            let drawWidth = 0;
+            let drawHeight = 0;
+
+            if(imageWidth / drawSpaceWidth > imageHeight / drawSpaceHeight){
+              drawWidth = drawSpaceWidth;
+              drawHeight = imageHeight * (drawSpaceWidth / imageWidth);
+            }else{
+              drawHeight = drawSpaceHeight;
+              drawWidth = imageWidth * (drawSpaceHeight / imageHeight);
+            }
+
+            ctx.drawImage(
+              image
+              ,0
+              ,0
+              ,imageWidth
+              ,imageHeight
+              ,0
+              ,0
+              ,drawWidth
+              ,drawHeight
+            );
+
+            ctxSave.drawImage(image,0,0);
 
             storager.set("ext",ext);
             storager.set("fileName",fileName);

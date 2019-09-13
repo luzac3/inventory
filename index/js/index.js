@@ -39,11 +39,11 @@ window.onload=function(){
                 ,cntntCd:cntntArr["cntntCd"]
             };
 
-            defaultAjax(argArr,"/timeKeeper/eventSet/php/register.php").then(function(data){
+            defaultAjax(argArr,"/inventory/eventSet/php/register.php").then(function(data){
                 // ページ繊維
-                location.href="/timeKeeper/eventSet/html/complete.html";
+                location.href="/inventory/eventSet/html/complete.html";
             },function(){
-                location.href="/timeKeeper/eventSet/html/error.html";
+                location.href="/inventory/eventSet/html/error.html";
             });
         }
     });

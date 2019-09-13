@@ -3,7 +3,7 @@ if(!isset($_SESSION)){
   session_start();
 }
 $root = $_SERVER["DOCUMENT_ROOT"];
-require_once $root . '/timeKeeper/common/php/stored.php';
+require_once $root . '/inventory/common/php/stored.php';
 
 if(!empty($_POST["argArr"])){
     // 平文パスワード

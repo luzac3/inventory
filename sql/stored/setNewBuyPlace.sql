@@ -51,11 +51,9 @@ BEGIN
         BUY_PLACE = _buyPlace
     ;
 
-    SET @query = "";
-
     IF IFNULL(@_buyPlace_cd, '') = '' THEN
-      SET @query = CONCAT(@query,"
-        INSERT INTO C_TYPE_CD
+      SET @query = CONCAT("
+        INSERT INTO C_BUY_PLACE_CD
         VALUES(
           (
             SELECT DISTINCT
@@ -64,23 +62,23 @@ BEGIN
                   SELECT
                     LPAD(MAX(CAST(BUY_PLACE_CD AS INT))+1,3,'0') AS BUY_PLACE_CD
                   FROM
-                    C_TYPE_CD
+                    C_BUY_PLACE_CD
                 ) AS temp
           )
           ,",_webFlg,"
-          ,",_buyPlace,"
-          ,",_url,"
+          ,'",_buyPlace,"'
+          ,'",_url,"'
         )
         ;
       ");
+
+      SET @query_text = @query;
+
+      -- 実行
+      PREPARE main_query FROM @query_text;
+      EXECUTE main_query;
+      DEALLOCATE PREPARE main_query;
     END IF;
-
-    SET @query_text = @query;
-
-    -- 実行
-    PREPARE main_query FROM @query_text;
-    EXECUTE main_query;
-    DEALLOCATE PREPARE main_query;
 
     SELECT
       BUY_PLACE_CD
