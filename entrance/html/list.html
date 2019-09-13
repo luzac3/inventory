@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" href="/inventory/common/css/base.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/inventory/common/css/table_conf.css" type="text/css" media="screen">
+<script type="text/javascript" src="/inventory/entrance/js/list.js"></script>
+<script type="text/javascript" src="/inventory/common/js/getServerTime.js"></script>
+<script type="text/javascript" src="/inventory/common/js/elemEventSetter.js"></script>
+<title>タグリスト</title>
+</head>
+<body><div id="main">
+<p><a href='/inventory/save/html/save.html'>新規登録</a></p>
+
+<div id="list">
+<?php
+    // データの取得
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once($root."/inventory/common/php/stored.php");
+
+    $list = stored("getAllInventory",null);
+
+    forEach($list as $row){
+      echo "<p>\n";
+      for($i = 0; $i < $para; $i++){
+        echo "　";
+      }
+      echo "<a href='/inventory/index/html/index.html?tagNo=".$row["NO"]."'>".$row["NAME"]."</a>";
+      echo "　　\n";
+    }
+
+    echo "<div class='admin'><a id='csv' download='tagList.csv' href='javascript.void(0)'>CSV出力</a></div>\n";
+?>
+</div>
+</div></body>
+</html>

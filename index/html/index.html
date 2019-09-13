@@ -1,3 +1,13 @@
+<?php
+    // データの取得
+    $root = $_SERVER["DOCUMENT_ROOT"];
+    require_once($root."inventory/common/php/stored.php");
+
+    if(!empty($_GET["tagNo"])){
+      $tagNo = $_GET["tagNo"];
+      $inventory = stored("getinventory",[$tagNo])[0];
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +28,9 @@
     <table>
       <tr>
         <td>タグNo</td>
-        <td><input type="text" value="" disabled></td>
+        <?php
+          echo "<td><p id='tagNo' class='".$tagNo."'>".$tagNo."</p></td>\n"
+        ?>
       </tr>
       <tr>
         <td>名称</td>
