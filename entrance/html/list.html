@@ -21,12 +21,10 @@
     require_once($root."/inventory/common/php/stored.php");
 
     $list = stored("getAllInventory",null);
+    print_r($list);
 
     forEach($list as $row){
       echo "<p>\n";
-      for($i = 0; $i < $para; $i++){
-        echo "　";
-      }
       echo "<a href='/inventory/index/html/index.html?tagNo=".$row["NO"]."'>".$row["NAME"]."</a>";
       echo "　　\n";
     }

@@ -17,11 +17,12 @@
 <link rel="stylesheet" href="/inventory/common/css/base.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/inventory/common/css/table_conf.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/inventory/eventSet/css/eventSet.css" type="text/css" media="screen">
-<script type="text/javascript" src="/inventory/eventSet/js/eventSet.js"></script>
-<script type="text/javascript" src="/inventory/common/js/defaultAjax.js"></script>
-<script type="text/javascript" src="/inventory/common/js/elemEventSetter.js"></script>
+<script type="text/javascript" src="/inventory/common/js/drawPict.js"></script>
+<script type="text/javascript" src="/inventory/index/js/index.js"></script>
+<script type="text/javascript" src="/inventory/index/js/setPict.js"></script>
+<script type="text/javascript" src="/inventory/index/js/base64toBlob.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<title>企画作成</title>
+<title>タグ詳細</title>
 </head>
 <body><div id="main">
   <form>
@@ -34,59 +35,72 @@
       </tr>
       <tr>
         <td>名称</td>
-        <td><input id="name" type="text" value=""></td>
+        <?php
+            echo "<td>".$inventory["NAME"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>色(色コード)</td>
-        <td><input id="color" type="text" value="" ></td>
+        <?php
+            echo "<td>".$inventory["COLOR"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>区分</td>
         <td><input id="type" type="text" value=""></td>
+        <?php
+            echo "<td>".$inventory["TYPE_CD"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>購入日</td>
-        <td><input id="buyDate" type="date" value=""></td>
+        <?php
+            echo "<td>".$inventory["BUY_DATE"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>値段</td>
-        <td><input id="price" type="number" value=""></td>
+            echo "<td>".$inventory["PRICE"]."</td>\n";
       </tr>
       <tr>
         <td>単位</td>
-        <td><input id="unit" type="text" value=""></td>
+            echo "<td>".$inventory["UNIT"]."</td>\n";
       </tr>
       <tr>
         <td>数量</td>
-        <td><input id="count" type="number" value=""></td>
+            echo "<td>".$inventory["ITEM_NUMBER"]."</td>\n";
       </tr>
       <tr>
         <td>割引有無</td>
-        <td><input class="other" type="radio" name="discountFlg" value="1" checked>あり　<input class="other" type="radio" name="discountFlg" value="0">なし</td>
+            echo "<td>".$inventory["DISCOUNT_FLG"]."</td>\n";
       </tr>
       <tr>
         <td>割引種類</td>
-        <td><input id="discountKind" type="text" value=""></td>
+            echo "<td>".$inventory["DISCOUNT_TYPE"]."</td>\n";
       </tr>
       <tr>
         <td>割引率(%)</td>
-        <td><input id="discountRate" type="number" value=""></td>
+            echo "<td>".$inventory["DISCOUNT_RATE"]."</td>\n";
       </tr>
       <tr>
         <td>購入場所</td>
-        <td><input id="buyPlace" type="text" value=""></td>
-      </tr>
-      <tr>
-        <td>購入サイトURL(場所がWEBの場合)</td>
-        <td><input id="buyURL" type="text" value=""></td>
+            echo "<td>".$inventory["BUY_PLACE_CD"]."</td>\n";
       </tr>
       <tr>
         <td>残数(大体でよい)</td>
-        <td><input id="leftItem" type="number" value=""></td>
+            echo "<td>".$inventory["LEFT_ITEM"]."</td>\n";
       </tr>
       <tr>
         <td>収納場所</td>
-        <td><input id="storage" type="text" value=""></td>
+            echo "<td>".$inventory["PLACE"]."</td>\n";
+      </tr>
+      <tr>
+        <td>登録日</td>
+            echo "<td>".$inventory["REGISTER_DATE"]."</td>\n";
+      </tr>
+      <tr>
+        <td>更新日</td>
+            echo "<td>".$inventory["UPDATE_DATE"]."</td>\n";
       </tr>
     </table>
   </form>
