@@ -40,8 +40,6 @@ BEGIN
 
     SELECT
         NOW(3) INTO @makeDate
-    FROM
-        T_INVENTORY_MSTR
     ;
 
       SET @query = CONCAT("

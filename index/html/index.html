@@ -7,6 +7,7 @@
       $tagNo = $_GET["tagNo"];
       $inventory = stored("getinventory",[$tagNo])[0];
     }
+    print_r($inventory);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,6 +18,7 @@
 <link rel="stylesheet" href="/inventory/common/css/base.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/inventory/common/css/table_conf.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/inventory/eventSet/css/eventSet.css" type="text/css" media="screen">
+<script type="text/javascript" src="/inventory/API/js/call_stored.js"></script>
 <script type="text/javascript" src="/inventory/common/js/drawPict.js"></script>
 <script type="text/javascript" src="/inventory/index/js/index.js"></script>
 <script type="text/javascript" src="/inventory/index/js/setPict.js"></script>
@@ -28,9 +30,14 @@
   <form>
     <table>
       <tr>
+        <td id="pictTd" class="relative" rowspan="16">
+          <p id="canvasParent" class="confirm"><canvas id ="canvas">画像表示領域</canvas></p>
+        </td>
+      </tr>
+      <tr>
         <td>タグNo</td>
         <?php
-          echo "<td><p id='tagNo' class='".$tagNo."'>".$tagNo."</p></td>\n"
+          echo "<td><p id='tagNo' class='".$tagNo."'>".$tagNo."</p></td>\n";
         ?>
       </tr>
       <tr>
@@ -47,7 +54,6 @@
       </tr>
       <tr>
         <td>区分</td>
-        <td><input id="type" type="text" value=""></td>
         <?php
             echo "<td>".$inventory["TYPE_CD"]."</td>\n";
         ?>
@@ -60,47 +66,69 @@
       </tr>
       <tr>
         <td>値段</td>
+        <?php
             echo "<td>".$inventory["PRICE"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>単位</td>
+        <?php
             echo "<td>".$inventory["UNIT"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>数量</td>
+        <?php
             echo "<td>".$inventory["ITEM_NUMBER"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>割引有無</td>
+        <?php
             echo "<td>".$inventory["DISCOUNT_FLG"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>割引種類</td>
+        <?php
             echo "<td>".$inventory["DISCOUNT_TYPE"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>割引率(%)</td>
+        <?php
             echo "<td>".$inventory["DISCOUNT_RATE"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>購入場所</td>
+        <?php
             echo "<td>".$inventory["BUY_PLACE_CD"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>残数(大体でよい)</td>
+        <?php
             echo "<td>".$inventory["LEFT_ITEM"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>収納場所</td>
+        <?php
             echo "<td>".$inventory["PLACE"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>登録日</td>
+        <?php
             echo "<td>".$inventory["REGISTER_DATE"]."</td>\n";
+        ?>
       </tr>
       <tr>
         <td>更新日</td>
+        <?php
             echo "<td>".$inventory["UPDATE_DATE"]."</td>\n";
+        ?>
       </tr>
     </table>
   </form>

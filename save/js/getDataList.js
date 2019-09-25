@@ -35,6 +35,8 @@ function getDataList(){
               base64 = canvas.toDataURL(imageType);
             }
 
+            console.log(base64);
+
             argArr = {
                 tableName:"T_INVENTORY_MSTR"
                 ,sql:[

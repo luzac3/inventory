@@ -27,17 +27,28 @@ function updateMaker($argArr){
               $sql .= "=";
               $sql .= "NOW(3)";
               $sql .= ",";
+              $num++;
+              continue;
+          }
+          if(substr($updateDataArr[$num],0,2) == "0x"){
+              $sql .= "=";
+              $sql .= $updateDataArr[$num];
+              $sql .= ",";
+              $num++;
               continue;
           }
           if($updateDataArr[$num] == "null" || $updateDataArr[$num] == ""){
               $sql .= "=";
               $sql .= "NULL";
               $sql .= ",";
-          }else{
-              $sql .= "='";
-              $sql .= $updateDataArr[$num];
-              $sql .= "',";
+              $num++;
+              continue;
           }
+
+          $sql .= "='";
+          $sql .= $updateDataArr[$num];
+          $sql .= "',";
+
           $num++;
       };
       $sql = substr($sql, 0, -1);

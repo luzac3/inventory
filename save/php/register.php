@@ -6,7 +6,9 @@ require_once $root . '/inventory/common/php/stored.php';
 require_once $root . '/inventory/common/php/updateMaker.php';
 
 if(!empty($_POST["argArr"])){
-    $argArr = $_POST["argArr"];
+  $argArr = $_POST["argArr"];
+/*
+    $argArr = $_FILES["argArr"];
 
     if($argArr["url"] === ""){
         $webFlg = 0;
@@ -29,8 +31,8 @@ if(!empty($_POST["argArr"])){
         ,"terms"=>$argArr["terms"]
       )
     );
-
-    echo json_encode($output);
+*/
+    echo json_encode($argArr);
 }else{
     echo json_encode(0);
 }

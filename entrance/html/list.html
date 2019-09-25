@@ -21,7 +21,6 @@
     require_once($root."/inventory/common/php/stored.php");
 
     $list = stored("getAllInventory",null);
-    print_r($list);
 
     forEach($list as $row){
       echo "<p>\n";
