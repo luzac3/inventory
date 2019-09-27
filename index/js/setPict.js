@@ -1,12 +1,13 @@
-function setPict(base64){
-  let image = new Image();
-  image.onload = function(){
-    // <img>要素としてDOMに追加
-    document.getElementById('main').appendChild(img);
-    // <img>要素にすることで幅・高さがわかります
-    var log = "w=" + img.width + " h=" + img.height;
-    document.getElementById('log').value = log;
-    //drawPict(image);
+function setPict(blob){
+  let img = new Image();
+  img.onload = function(){
+    drawCanvas(
+      img
+      ,document.getElementById("canvasParent")
+      ,document.getElementById("canvas")
+      ,document.getElementById("DLCanvas")
+    );
   }
-  image.src = base64;
+  let url = window.URL || window.webkitURL;
+  img.src = url.createObjectURL(blob);
 }

@@ -1,11 +1,13 @@
 html {
 	background-color:#DDFFFF;
 }
-h1,p,body{
+h1,p{
 	marign:0px;
 	padding:0px;
 }
-body {
+#contents {
+	marign:0px;
+	padding:0px;
 	position:relative;
 	width:90%;
 	height:100%;
@@ -163,4 +165,10 @@ h1{
 	#footer p{
 		width:60%;
 	}
+}
+
+@media print {
+    canvas{
+		  display: none !important;
+		}
 }

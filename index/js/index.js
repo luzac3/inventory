@@ -2,12 +2,30 @@
 window.onload=function(){
   let tagNo = document.getElementById("tagNo").className;
 
-  // base64データ取得
-  call_stored("getBase64",[tagNo]).then(function(base64){
-      // 非同期なので後から表示される
-      setPict(base64);
-  },function(){
-    //error;
+  let type = "image/" + document.getElementById("canvas").className;
+
+  getBlob(tagNo,type).then(function(blob){
+    setPict(blob);
   });
 
+  elemEventSetter(
+    document.getElementsByClassName("canvasScreen")
+    ,"click"
+    ,function(){
+      topWindow();
+
+      getBlob(tagNo,type).then(function(blob){
+          let img = new Image();
+          img.onload = function(){
+            setPreview(
+              document.getElementById("topDiv")
+              ,img
+            );
+          }
+          let url = window.URL || window.webkitURL;
+          img.src = url.createObjectURL(blob);
+      });
+    }
+    ,null
+  );
 }

@@ -1,10 +1,10 @@
-DROP PROCEDURE IF EXISTS getBase64;
+DROP PROCEDURE IF EXISTS getBlob;
 DELIMITER //
 -- ********************************************************************************************
--- getBase64 base64データ取得
+-- getBlob blobデータ取得
 --
 -- 【処理概要】
---  base64データ取得
+--  blobデータ取得
 --
 --
 -- 【呼び出し元画面】
@@ -22,11 +22,11 @@ DELIMITER //
 -- 【更新履歴】
 --  2019.9.20 大杉　新規作成
 -- ********************************************************************************************
-CREATE PROCEDURE `getBase64`(
+CREATE PROCEDURE `getBlob`(
     IN `_tag_no` CHAR(5)
     , OUT `exit_cd` INTEGER
 )
-COMMENT 'base64データ取得'
+COMMENT 'blobデータ取得'
 
 BEGIN
 

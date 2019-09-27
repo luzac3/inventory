@@ -7,7 +7,6 @@
       $tagNo = $_GET["tagNo"];
       $inventory = stored("getinventory",[$tagNo])[0];
     }
-    print_r($inventory);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,21 +16,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
 <link rel="stylesheet" href="/inventory/common/css/base.css" type="text/css" media="screen">
 <link rel="stylesheet" href="/inventory/common/css/table_conf.css" type="text/css" media="screen">
-<link rel="stylesheet" href="/inventory/eventSet/css/eventSet.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/inventory/common/css/canvas.css" type="text/css" media="screen">
+<link rel="stylesheet" href="/inventory/index/css/index.css" type="text/css" media="screen">
 <script type="text/javascript" src="/inventory/API/js/call_stored.js"></script>
-<script type="text/javascript" src="/inventory/common/js/drawPict.js"></script>
+<script type="text/javascript" src="/inventory/common/js/drawCanvas.js"></script>
+<script type="text/javascript" src="/inventory/common/js/elemEventSetter.js"></script>
+<script type="text/javascript" src="/inventory/common/js/topWindow.js"></script>
+<script type="text/javascript" src="/inventory/common/js/setPreview.js"></script>
+<script type="text/javascript" src="/inventory/common/js/getBlob.js"></script>
 <script type="text/javascript" src="/inventory/index/js/index.js"></script>
 <script type="text/javascript" src="/inventory/index/js/setPict.js"></script>
 <script type="text/javascript" src="/inventory/index/js/base64toBlob.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <title>タグ詳細</title>
 </head>
-<body><div id="main">
-  <form>
+<body><div id = "contents"><div id="main">
+  <div><form>
     <table>
       <tr>
-        <td id="pictTd" class="relative" rowspan="16">
-          <p id="canvasParent" class="confirm"><canvas id ="canvas">画像表示領域</canvas></p>
+        <td id="pictTd" class="relative" rowspan="17">
+          <?php
+            echo "<p id='canvasParent' class='confirm'><span class='canvasScreen'></span><canvas id ='canvas' class='".$inventory["EXT"]."'>画像表示領域</canvas></p>\n";
+          ?>
         </td>
       </tr>
       <tr>
@@ -131,6 +137,8 @@
         ?>
       </tr>
     </table>
-  </form>
-  <button type="button" value="register">登録</button>
-</div><body>
+  </form></div>
+  <p><a href="/inventory/entrance/html/list.html">リストに戻る</a></p>
+  <p class="none"><canvas id ="DLCanvas" class="none">DL用画像領域</canvas></p>
+
+</div></div><body>
