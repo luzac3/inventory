@@ -53,6 +53,7 @@ function setPreview(parentNode,img){
   document.getElementById("topDiv").style.width = (canvasWidth + 34) + "px";
   document.getElementById("topDiv").style.height = (canvasHeight + 54) + "px";
   document.getElementById("topDiv").style.borderRadius = "10px";
+  document.getElementById("topDiv").style.backgroundColor = "#FFFFFF";
 
   // 親ウィンドウの位置を現wrapper位置へ
   document.getElementById("topDiv").style.top = (window.pageXOffset + canvasTop - 25) + "px";

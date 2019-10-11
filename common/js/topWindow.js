@@ -36,7 +36,6 @@ function topWindow(outerClickClose=false){
   topDiv.id="topDiv";
   topDiv.style.zIndex = 11;
   topDiv.style.position = "absolute";
-  topDiv.style.backgroundColor = "#FFFFFF";
   topDiv.style.width = window.innerWidth * 0.9 + "px";
   topDiv.style.height = window.innerHeight * 0.9 + "px";
   topDiv.style.left = (getLeftPosition + (window.innerWidth / 20)) + "px";
